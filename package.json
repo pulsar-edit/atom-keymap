@@ -2,7 +2,7 @@
   "name": "atom-keymap",
   "version": "8.2.15",
   "description": "Atom's DOM-aware keymap module",
-  "main": "./src/keymap-manager",
+  "main": "./src/keymap-manager.coffee",
   "scripts": {
     "prepare": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
     "clean": "rimraf lib && rimraf api.json",
