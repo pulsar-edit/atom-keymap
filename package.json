@@ -2,7 +2,7 @@
   "name": "atom-keymap",
   "version": "8.2.15",
   "description": "Atom's DOM-aware keymap module",
-  "main": "./lib/keymap-manager",
+  "main": "./src/keymap-manager",
   "scripts": {
     "prepare": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
     "clean": "rimraf lib && rimraf api.json",
@@ -23,12 +23,11 @@
   "license": "MIT",
   "dependencies": {
     "clear-cut": "^2",
-    "emissary": "^1.1.0",
     "event-kit": "^1.0.0",
     "fs-plus": "^3.0.0",
     "grim": "^1.2.1",
     "keyboard-layout": "2.0.17",
-    "pathwatcher": "^8.0.0",
+    "pathwatcher": "https://github.com/pulsar-edit/pulsar-pathwatcher.git",
     "property-accessors": "^1",
     "season": "^6.0.2"
   },
