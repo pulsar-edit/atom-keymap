@@ -27,7 +27,7 @@
     "fs-plus": "^3.0.0",
     "grim": "^1.2.1",
     "keyboard-layout": "2.0.17",
-    "pathwatcher": "https://github.com/pulsar-edit/pulsar-pathwatcher.git",
+    "pathwatcher": "https://github.com/pulsar-edit/pulsar-pathwatcher.git#de91ac16e20f12cc04779cc256c6f55087b91a92",
     "property-accessors": "^1",
     "season": "^6.0.2"
   },
