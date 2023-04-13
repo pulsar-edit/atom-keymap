@@ -43,7 +43,7 @@
     "debounce": "1.0.0",
     "electron": "24.0.0",
     "electron-mocha": "^6.0.4",
-    "electron-rebuild": "^2.3.5",
+    "electron-rebuild": "^3.2.9",
     "eslint": "2.2.0",
     "eslint-config-standard": "5.1.0",
     "eslint-plugin-promise": "1.0.8",
