@@ -22,6 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@electron/rebuild": "^3.2.11",
     "clear-cut": "^2",
     "event-kit": "^1.0.0",
     "fs-plus": "^3.0.0",
@@ -43,7 +44,6 @@
     "debounce": "1.0.0",
     "electron": "24.0.0",
     "electron-mocha": "^6.0.4",
-    "electron-rebuild": "^3.2.9",
     "eslint": "2.2.0",
     "eslint-config-standard": "5.1.0",
     "eslint-plugin-promise": "1.0.8",
