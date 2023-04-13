@@ -23,6 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@electron/rebuild": "^3.2.11",
     "clear-cut": "^2",
     "event-kit": "^1.0.0",
     "fs-plus": "^3.0.0",
@@ -33,7 +34,6 @@
     "season": "^6.0.2"
   },
   "devDependencies": {
-    "@electron/rebuild": "^3.2.11",
     "babel-cli": "6.5.1",
     "babel-eslint": "5.0.0-beta10",
     "babel-preset-es2015": "6.5.0",
