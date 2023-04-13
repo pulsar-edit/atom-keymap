@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Rebuild dependencies for Electron
-        run: $(npm bin)/electron-rebuild
+        run: npx electron-rebuild
       - name: Run tests
         uses: coactions/setup-xvfb@v1.0.1
         with:
