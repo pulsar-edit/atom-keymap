@@ -11,11 +11,13 @@
     "test": "electron-mocha --renderer --preload spec/helpers/setup.js spec/*",
     "test-drive": "SUPPRESS_EXIT=true electron-mocha --no-colors --renderer --interactive --preload spec/helpers/setup.js spec/*",
     "ci": "npm run compile && npm run lint && npm run test",
-    "atomdoc": "grunt shell:update-atomdoc atomdoc"
+    "atomdoc": "grunt shell:update-atomdoc atomdoc",
+    "rebuild": "electron-rebuild -f -w keyboard-layout"
   },
   "repository": "https://github.com/pulsar-edit/atom-keymap",
   "license": "MIT",
   "dependencies": {
+    "@electron/rebuild": "^3.2.11",
     "clear-cut": "^2",
     "event-kit": "^1.0.0",
     "fs-plus": "^3.0.0",
@@ -37,7 +39,6 @@
     "debounce": "1.0.0",
     "electron": "24.0.0",
     "electron-mocha": "^6.0.4",
-    "electron-rebuild": "^2.3.5",
     "eslint": "2.2.0",
     "eslint-config-standard": "5.1.0",
     "eslint-plugin-promise": "1.0.8",
