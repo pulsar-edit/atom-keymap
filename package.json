@@ -1,7 +1,7 @@
 {
   "name": "atom-keymap",
   "version": "8.2.15",
-  "description": "Atom's DOM-aware keymap module",
+  "description": "Pulsar's DOM-aware keymap module",
   "main": "./lib/keymap-manager",
   "scripts": {
     "prepare": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
@@ -13,13 +13,7 @@
     "ci": "npm run compile && npm run lint && npm run test",
     "atomdoc": "grunt shell:update-atomdoc atomdoc"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/atom/atom-keymap.git"
-  },
-  "bugs": {
-    "url": "https://github.com/atom/atom-keymap/issues"
-  },
+  "repository": "https://github.com/pulsar-edit/atom-keymap",
   "license": "MIT",
   "dependencies": {
     "clear-cut": "^2",
