@@ -2,7 +2,7 @@
   "name": "atom-keymap",
   "version": "8.2.16",
   "description": "Pulsar's DOM-aware keymap module",
-  "main": "./lib/keymap-manager",
+  "main": "./src/keymap-manager",
   "scripts": {
     "clean": "rimraf lib && rimraf api.json",
     "test": "electron-mocha --renderer --preload spec/helpers/setup.js spec/*",
