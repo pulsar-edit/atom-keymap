@@ -9,7 +9,7 @@
  */
 let isKeyup;
 const {calculateSpecificity} = require('clear-cut');
-const KeyboardLayout = require('keyboard-layout');
+const KeyboardLayout = require('@pulsar-edit/keyboard-layout');
 
 const MODIFIERS = new Set(['ctrl', 'alt', 'shift', 'cmd']);
 const ENDS_IN_MODIFIER_REGEX = /(ctrl|alt|shift|cmd)$/;
