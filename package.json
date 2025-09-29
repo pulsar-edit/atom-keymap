@@ -1,28 +1,28 @@
 {
   "name": "atom-keymap",
-  "version": "8.2.15",
+  "version": "8.2.16",
   "description": "Pulsar's DOM-aware keymap module",
-  "main": "./lib/keymap-manager",
+  "main": "./src/keymap-manager",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "prepare": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
     "clean": "rimraf lib && rimraf api.json",
-    "compile": "coffee --no-header --output lib --compile src && babel src --out-dir lib",
-    "lint": "coffeelint -r src spec && eslint src spec",
-    "test": "electron-mocha --renderer --preload spec/helpers/setup.js spec/*",
-    "test-drive": "SUPPRESS_EXIT=true electron-mocha --no-colors --renderer --interactive --preload spec/helpers/setup.js spec/*",
-    "ci": "npm run compile && npm run lint && npm run test",
-    "atomdoc": "grunt shell:update-atomdoc atomdoc"
+    "test": "electron-mocha --renderer --no-sandbox --preload spec/helpers/setup.js spec/*-spec.*",
+    "test-drive": "SUPPRESS_EXIT=true electron-mocha --no-colors --renderer --interactive --preload spec/helpers/setup.js spec/*-spec.*",
+    "atomdoc": "grunt shell:update-atomdoc atomdoc",
+    "rebuild": "electron-rebuild -f -w keyboard-layout"
   },
   "repository": "https://github.com/pulsar-edit/atom-keymap",
   "license": "MIT",
   "dependencies": {
+    "@electron/rebuild": "^3.2.11",
     "clear-cut": "^2",
-    "emissary": "^1.1.0",
     "event-kit": "^1.0.0",
     "fs-plus": "^3.0.0",
     "grim": "^1.2.1",
-    "keyboard-layout": "2.0.17",
-    "pathwatcher": "^8.0.0",
+    "@pulsar-edit/keyboard-layout": "^3.0.4",
+    "@pulsar-edit/pathwatcher": "^9.0.2",
     "property-accessors": "^1",
     "season": "^6.0.2"
   },
@@ -36,9 +36,8 @@
     "coffee-script": "1.7.0",
     "coffeelint": "1.16.0",
     "debounce": "1.0.0",
-    "electron": "^4.2.12",
-    "electron-mocha": "^6.0.4",
-    "electron-rebuild": "^2.3.5",
+    "electron": "30.0.0",
+    "electron-mocha": "^13.1.0",
     "eslint": "2.2.0",
     "eslint-config-standard": "5.1.0",
     "eslint-plugin-promise": "1.0.8",
