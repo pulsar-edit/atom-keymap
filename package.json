@@ -8,7 +8,7 @@
   },
   "scripts": {
     "clean": "rimraf lib && rimraf api.json",
-    "test": "electron-mocha --renderer --preload spec/helpers/setup.js spec/*-spec.*",
+    "test": "electron-mocha --renderer --no-sandbox --preload spec/helpers/setup.js spec/*-spec.*",
     "test-drive": "SUPPRESS_EXIT=true electron-mocha --no-colors --renderer --interactive --preload spec/helpers/setup.js spec/*-spec.*",
     "atomdoc": "grunt shell:update-atomdoc atomdoc",
     "rebuild": "electron-rebuild -f -w keyboard-layout"
