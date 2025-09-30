@@ -40,7 +40,8 @@ const NUMPAD_KEY_NAMES_BY_KEYBOARD_EVENT_CODE = {
 };
 
 const LATIN_KEYMAP_CACHE = new WeakMap();
-const isLatinKeymap = function(keymap) {
+
+function isLatinKeymap(keymap) {
   if (keymap == null) { return true; }
 
   let isLatin = LATIN_KEYMAP_CACHE.get(keymap);
@@ -61,21 +62,21 @@ const isLatinKeymap = function(keymap) {
 
 const isASCIICharacter = character => (character != null) && (character.length === 1) && (character.charCodeAt(0) <= 127);
 
-var isLatinCharacter = character => (character != null) && (character.length === 1) && (character.charCodeAt(0) <= 0x024F);
+const isLatinCharacter = character => (character != null) && (character.length === 1) && (character.charCodeAt(0) <= 0x024F);
 
 const isUpperCaseCharacter = character => (character != null) && (character.length === 1) && (character.toLowerCase() !== character);
 
 const isLowerCaseCharacter = character => (character != null) && (character.length === 1) && (character.toUpperCase() !== character);
 
 let usKeymap = null;
-const usCharactersForKeyCode = function(code) {
+function usCharactersForKeyCode(code) {
   if (usKeymap == null) { usKeymap = require('./us-keymap'); }
   return usKeymap[code];
 };
 
 let slovakCmdKeymap = null;
 let slovakQwertyCmdKeymap = null;
-const slovakCmdCharactersForKeyCode = function(code, layout) {
+function slovakCmdCharactersForKeyCode(code, layout) {
   if (slovakCmdKeymap == null) { slovakCmdKeymap = require('./slovak-cmd-keymap'); }
   if (slovakQwertyCmdKeymap == null) { slovakQwertyCmdKeymap = require('./slovak-qwerty-cmd-keymap'); }
 
@@ -88,9 +89,9 @@ const slovakCmdCharactersForKeyCode = function(code, layout) {
 
 exports.normalizeKeystrokes = function(keystrokes) {
   const normalizedKeystrokes = [];
-  for (var keystroke of Array.from(keystrokes.split(WHITESPACE_REGEX))) {
-    var normalizedKeystroke;
-    if (normalizedKeystroke = normalizeKeystroke(keystroke)) {
+  for (const keystroke of keystrokes.split(WHITESPACE_REGEX)) {
+    const normalizedKeystroke = normalizeKeystroke(keystroke);
+    if (normalizedKeystroke) {
       normalizedKeystrokes.push(normalizedKeystroke);
     } else {
       return false;
@@ -99,9 +100,9 @@ exports.normalizeKeystrokes = function(keystrokes) {
   return normalizedKeystrokes.join(' ');
 };
 
-var normalizeKeystroke = function(keystroke) {
-  let keyup;
-  if (keyup = isKeyup(keystroke)) {
+function normalizeKeystroke(keystroke) {
+  let keyup = isKeyup(keystroke);
+  if (keyup) {
     keystroke = keystroke.slice(1);
   }
   const keys = parseKeystroke(keystroke);
@@ -146,15 +147,15 @@ var normalizeKeystroke = function(keystroke) {
   return keystroke;
 };
 
-var parseKeystroke = function(keystroke) {
+function parseKeystroke(keystroke) {
   const keys = [];
   let keyStart = 0;
-  for (let index = 0; index < keystroke.length; index++) {
-    var character = keystroke[index];
+  for (let i = 0; i < keystroke.length; i++) {
+    var character = keystroke[i];
     if (character === '-') {
-      if (index > keyStart) {
-        keys.push(keystroke.substring(keyStart, index));
-        keyStart = index + 1;
+      if (i > keyStart) {
+        keys.push(keystroke.substring(keyStart, i));
+        keyStart = i + 1;
 
         // The keystroke has a trailing - and is invalid
         if (keyStart === keystroke.length) { return false; }
@@ -353,7 +354,7 @@ exports.keystrokeForKeyboardEvent = function(event, customKeystrokeResolvers) {
   return keystroke;
 };
 
-var nonAltModifiedKeyForKeyboardEvent = function(event) {
+function nonAltModifiedKeyForKeyboardEvent(event) {
   let characters;
   if (event.code && (characters = __guard__(KeyboardLayout.getCurrentKeymap(), x => x[event.code]))) {
     if (event.shiftKey) {
@@ -393,9 +394,7 @@ exports.getModifierKeys = function(keystroke) {
   return mod_keys;
 };
 
-
-var buildKeyboardEvent = function(key, eventType, param) {
-  if (param == null) { param = {}; }
+function buildKeyboardEvent(key, eventType, param = {}) {
   const {ctrl, shift, alt, cmd, keyCode, target, location} = param;
   const ctrlKey = ctrl != null ? ctrl : false;
   const altKey = alt != null ? alt : false;
