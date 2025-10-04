@@ -1,6 +1,8 @@
 name: CI
 
-on: [push]
+on:
+  - push
+  - pull_request
 
 env:
   NODE_VERSION: 20
@@ -12,15 +14,27 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - name: Install Linux prerequisites
+        if: ${{ runner.os == 'Linux' }}
+        run: sudo apt install libx11-dev libxkbfile-dev libwayland-dev libxkbcommon-dev libxkbcommon-x11-dev libxkbcommon0 xkb-data
+
+      - name: Install Python dependencies (macOS)
+        if: "contains(matrix.os, 'macos')"
+        run: brew install python-setuptools
+
+      - name: Install Python dependencies (Linux)
+        if: "contains(matrix.os, 'linux')"
+        run: python3 -m pip install setuptools
+
       - name: Install dependencies
-        run: npm i
-      - name: Rebuild dependencies for Electron
-        run: npx electron-rebuild
+        run: npm install
+      #- name: Rebuild dependencies for Electron
+      #  run: npm run rebuild
       - name: Run tests
-        uses: GabrielBB/xvfb-action@v1
+        uses: coactions/setup-xvfb@v1.0.1
         with:
           run: npm test
