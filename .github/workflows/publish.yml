@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - run: sudo apt install libx11-dev libxkbfile-dev libwayland-dev libxkbcommon-dev libxkbcommon-x11-dev libxkbcommon0 xkb-data
       - run: python3 -m pip install setuptools
-      - run: npx electron-rebuild
+      - run: npx @electron/rebuild -v 30.0.9
       - run: npm ci
       - uses: GabrielBB/xvfb-action@v1
         with:
