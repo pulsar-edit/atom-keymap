@@ -5,10 +5,10 @@
 .eslintrc
 .gitignore
 .npmignore
+.tool-versions
 .travis.yml
 benchmark
 Gruntfile.coffee
 npm-debug.log
 script
 spec
-src
